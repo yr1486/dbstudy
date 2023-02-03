@@ -1,0 +1,55 @@
+
+DROP TABLE 수강신청_TBL;
+DROP TABLE SUBJECT_TBL;
+DROP TABLE STUDENT_TBL;
+
+
+-- 학생 테이블 생성
+CREATE TABLE STUDENT_TBL (
+    STD_NO      VARCHAR2(5 BYTE)    NOT NULL,
+    STD_NAME    VARCHAR2(15 BYTE)   NULL,
+    STD_AGE     NUMBER(3)           NULL,
+    CONSTRAINT PK_STUDENT PRIMARY KEY(STD_NO)
+);
+
+-- 과목 테이블 생성
+CREATE TABLE SUBJECT_TBL (
+    SUB_CODE VARCHAR2(1 BYTE)  NOT NULL, -- 낫널 헷갈림..
+    SUB_NAME VARCHAR2(10 BYTE) NULL,
+    PRO_NAME VARCHAR2(15 BYTE) NULL,
+    CONSTRAINT PK_SUBJECT PRIMARY KEY(SUB_CODE) -- 다시 보기
+);
+    
+--수강신청 테이블 생성
+CREATE TABLE 수강신청_TBL ( -- 얘 위치가 맨 아래인것..같은데........
+    수강신청_NO NUMBER NOT NULL,
+    STD_NO   VARCHAR2(5 BYTE) NOT NULL,
+    SUB_CODE VARCHAR2(1 BYTE) NOT NULL,
+    CONSTRAINT PK_수강신청 PRIMARY KEY(수강신청_NO),
+    CONSTRAINT FK_수강신청_STUDENT FOREIGN KEY(STD_NO) REFERENCES STUDENT_TBL(STD_NO),
+    CONSTRAINT FK_수강신청_SUBJECT FOREIGN KEY(SUB_CODE) REFERENCES SUBJECT_TBL(SUB_CODE)
+);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
