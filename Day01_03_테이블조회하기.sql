@@ -160,7 +160,7 @@ SELECT EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO
 --          (2) _ : 1글자로 제한된 모든 문자
 --    2) 연산자
 --          (1) LIKE        : WILD CARD 를 포함한다
---            (2) NOT LIKE  : WILD CARD를 포함하지 않는다
+--          (2) NOT LIKE  : WILD CARD를 포함하지 않는다
 
 --A%      A_
 --AI      AI
