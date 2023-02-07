@@ -1,5 +1,5 @@
 /*
-    DDL
+    DDL (TABLE값)
     1. Data Definition Language
     2. 데이터 정의어
     3. 데이터베이스 객체(user, table, sequece, view, index) 등을 생성/수정/삭제하는 언어이다

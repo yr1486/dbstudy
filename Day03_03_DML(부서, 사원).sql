@@ -1,5 +1,5 @@
 /*
-    DML
+    DML (ROW값)
     1. Data Manipulation Language
     2. 데이터 조작어
     3. 데이터(행, row) 를 삽입, 수정, 삭제 할 때 사용하는 언이이다
