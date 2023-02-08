@@ -57,15 +57,15 @@ CREATE TABLE SCHEDULE_TBL (
     S_INFO        VARCHAR2(100 BYTE) NULL
 );
 
-
--- 기본키 제거하기 ==> 순서상 4번의 오류가 먼저뜨고 실행이됨.
+-- 기본키 제거하기(문법 소개일 뿐, 실제로 작성할 필요는 없습니다. DROP TABLE을 수행하면 제약조건도 모두 제거됩니다.)
 ALTER TABLE NATION_TBL
-    DROP PRIMARY KEY; -- 테이블의 기본키는 오직 1개이므로 제약조건의 이름을 몰라도 삭제 할 수 있다
-ALTER TABLE NATION_TBL
-    DROP CONSTRAINT PK_NATION;
+    DROP PRIMARY KEY;  -- 테이블의 기본키는 오직 1개이므로 제약조건의 이름을 몰라도 삭제할 수 있다.
 ALTER TABLE EVENT_TBL
     DROP PRIMARY KEY;
-
+ALTER TABLE PLAYER_TBL
+    DROP PRIMARY KEY;
+ALTER TABLE SCHEDULE_TBL
+    DROP PRIMARY KEY;
 
 -- 기본키 추가하기
 ALTER TABLE NATION_TBL
@@ -76,8 +76,6 @@ ALTER TABLE PLAYER_TBL
     ADD CONSTRAINT PK_PLAYER PRIMARY KEY(P_CODE);
 ALTER TABLE SCHEDULE_TBL
     ADD CONSTRAINT PK_SCHEDULE PRIMARY KEY(S_NO);
-    
-
 
 -- 외래키 제거하기(문법 소개일 뿐, 실제로 작성할 필요는 없습니다. DROP TABLE을 수행하면 제약조건도 모두 제거됩니다.)
 ALTER TABLE PLAYER_TBL
@@ -106,7 +104,6 @@ ALTER TABLE SCHEDULE_TBL
     ADD CONSTRAINT FK_SCHEDULE_EVENT FOREIGN KEY(E_CODE)
         REFERENCES EVENT_TBL(E_CODE)
             ON DELETE SET NULL;  -- ON DELETE CASCADE도 가능하다.
-
 
 -- 연습. NATION_TBL의 기본키 제거하기
 -- 외래키(FK)에 의해서 참조 중인 기본키(PK)는 "반드시" 외래키를 먼저 삭제해야 한다.

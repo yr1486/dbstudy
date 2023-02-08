@@ -85,7 +85,7 @@ CREATE TABLE ORDER_TBL (
 
 -- 테이블의 구조를 확인하는 쿼리문 (설명)
 --DESCRIBE ALL_CONSTRAINTS; -- 이름이 칼럼 / 널은 낫널유무 / 유형은 타입
---SELECT * FROM ALL_CONSTRAINTS WHERE CONSTRAINT_NAME LIKE 'PK%'; --*는 수업에만 편의를 위해 쓰자. 실전에서는 안됨.
+--SELECT * FROM ALL_CONSTRAINTS WHERE CONSTRAINT_NAME LIKE 'PK%'; -- *는 수업에만 편의를 위해 쓰자. 실전에서는 안됨.
 
 -- M:N은 1:M * 2     !!!!!!!!!!!!!!!!!!!!!!!!
 

@@ -5,14 +5,16 @@
     3. 데이터(행, row) 를 삽입, 수정, 삭제 할 때 사용하는 언이이다
     4. DML 사용 후에는 COMMIT 또는 ROLLBACK 처리를 해야한다
     5. 종류
-    1) 삽입 : INSERT INTO VALUES
-    2) 수정 : UPDATE SET WHERE
-    3) 삭제 : DELETE FROM WHERE
+     1) 삽입 : INSERT INTO VALUES
+     2) 수정 : UPDATE SET WHERE
+     3) 삭제 : DELETE FROM WHERE
 
 */
 
 --트랜젝션.. 중요함..
 -- Day 02-03이랑 예제가 같아서 거기서 먼저 삭제돌리고 난후에 여기 실행해야 돌아감.
+
+-- 참고. 자격증에서는 DML을 INSERT,UPDATE,DELETE + SELECT로 보는 경우도 있다.
 
 -- 테이블 삭제
 DROP TABLE EMPLOYEE_TBL;
@@ -57,14 +59,15 @@ DROP SEQUENCE DEPARTMENT_SEQ;
 -- 시퀀스(번호 생성기) 만들기
 -- 시퀀스는 PK값을 만들 때 주로 사용한다.
 
-CREATE SEQUENCE DEPARTMENT_SEQ -- 번호 뽑는 기계가 만들어짐
-    INCREMENT BY 1 -- 1씩 증가하는 번호를 만든다 (생략 가능함)
-    START WITH   1 -- 1부터 만든다               (생략 가능함)
-    NOMAXVALUE     -- 번호의 상한선이 없다       (생략 가능함)    MAXVALUE 100 : 번호를 100까지만 생성한다
-    NOMINVALUE     -- 번호의 하한선이 없다       (생략 가능함)    MINVALUE 100 : 번호의 최소값이 100이다
-    NOCYCLE        -- 번호 순환이 없다           (생략 가능함)    CYCLE : 번호가 MAXVALUE에 도달하면 다음 번호는 MINVALUE이다 ==> 순환되면 PK값으로 못쓴다.
-    NOCACHE        -- 메모리 캐시를 사용하지 않는다 (사용하지 않는 것이 좋다)
-    ORDER          -- 번호 건너뛰기가 없다                        NOORDER : 번호 건너뛰기가 가능하다
+-- 시퀀스(번호 생성기) 만들기
+CREATE SEQUENCE DEPARTMENT_SEQ -- 번호 뽑는 기계가 만들어짐 
+    INCREMENT BY 1  -- 1씩 증가하는 번호를 만든다.(생략 가능)
+    START WITH 1    -- 1부터 번호를 만든다.(생략 가능)
+    NOMAXVALUE      -- 번호의 상한선이 없다.(생략 가능)  MAXVALUE 100 : 번호를 100까지만 생성한다.
+    NOMINVALUE      -- 번호의 하한선이 없다.(생략 가능)  MINVALUE 100 : 번호의 최소값이 100이다.
+    NOCYCLE         -- 번호 순환이 없다.(생략 가능)      CYCLE : 번호가 MAXVALUE에 도달하면 다음 번호는 MINVALUE이다. => 순환되면 PK값으로 못쓴다.
+    NOCACHE         -- 메모리 캐시를 사용하지 않는다.    CACHE : 메모리 캐시를 사용한다.(사용하지 않는 것이 좋다.)
+    ORDER           -- 번호 건너뛰기가 없다.             NOORDER : 번호 건너뛰기가 가능하다.
 ;
 
 

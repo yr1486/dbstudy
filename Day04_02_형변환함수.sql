@@ -32,8 +32,8 @@ SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME
 */
 
 -- 1) 숫자를 문자로 변환하기
---    100 -> '100'
---    1000 -> '1,000'
+-- 100  -> '100'
+-- 1000 -> '1,000'
 SELECT
        TO_CHAR(100)             -- '100'
      , TO_CHAR(100, '999999')   -- '   100'
@@ -45,7 +45,7 @@ SELECT
      , TO_CHAR(0.125, '0.00')   -- '0.13' (반올림)
   FROM
        DUAL;
-
+       
 -- 2) 날짜를 문자로 변환하기 (중요)
 -- 날짜를 원하는 형식으로 변환할 때 사용한다
 --    2023-02-07 -> '2023년 02월 07일'
@@ -76,15 +76,13 @@ SELECT
   FROM
        DUAL;
 
-
---EMPLOYEES 테이블에서 90/01/01 ~ 99/12/31 사이에 입사한 사원 조회하기
+-- EMPLOYEES 테이블에서 2000/01/01 ~ 2005/12/31 사이에 입사한 사원 조회하기
 SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, HIRE_DATE
   FROM EMPLOYEES
-WHERE TO_DATE(HIRE_DATE, 'YY/MM/DD')BETWEEN TO_DATE( '00/01/01', 'YY/MM/DD') AND TO_DATE('05/12/31', 'YY/MM/DD');
+ WHERE TO_DATE(HIRE_DATE, 'YY/MM/DD') BETWEEN TO_DATE('00/01/01', 'YY/MM/DD') AND TO_DATE('05/12/31', 'YY/MM/DD');
 
 
-
--- 날짜 비교는 TO_DATE 함수를 이용하자
+-- 날짜 비교는 TO_DATE 함수를 이용하자!
 DROP TABLE SAMPLE_TBL;
 CREATE TABLE SAMPLE_TBL (
     DT1 DATE
@@ -93,7 +91,12 @@ CREATE TABLE SAMPLE_TBL (
 INSERT INTO SAMPLE_TBL(DT1) VALUES(SYSDATE);
 COMMIT;
 
--- 안됨
+-- 안 됨
+SELECT DT1
+  FROM SAMPLE_TBL
+ WHERE DT1 = '23/02/07';
+
+-- 안 됨
 SELECT DT1
   FROM SAMPLE_TBL
  WHERE DT1 = TO_DATE('23/02/07', 'YY/MM/DD');
@@ -102,6 +105,7 @@ SELECT DT1
 SELECT DT1
   FROM SAMPLE_TBL
  WHERE TO_DATE(DT1, 'YY/MM/DD') = TO_DATE('23/02/07', 'YY/MM/DD');
+
 
 -- 다시 한 번 주의!
 SELECT 
