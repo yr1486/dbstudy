@@ -22,6 +22,7 @@
     2. 모든 쿼리 실행 : F5(새로고침 아님 주의)
     ==> 맨위에 초록 버튼 1. 선택(▶) 2.전체 인데 우리는 단축키로 많이 쓸거임.
 */
+
 DROP USER GDJ61 CASCADE;
 CREATE USER GDJ61 IDENTIFIED BY 1111;
 GRANT DBA TO GDJ61;
@@ -30,7 +31,10 @@ GRANT DBA TO GDJ61;
 -- 근데 F5 한번 더 누르면 정삭적으로 작동함. 왜냐 2번째 문장으로 생성자가 만들어 졌으니까! => 원리 이해하기
 -- 그리고 새로 만들고자 하는게 무엇이든 만들고자 하는 코드 위에 삭제코드를 넣으면 편함, 위 3문장 암기
 
+DROP USER BYR CASCADE;
+CREATE USER BYR IDENTIFIED BY 1111;
+GRANT DBA TO BYR;
 
-        
+
         
     
