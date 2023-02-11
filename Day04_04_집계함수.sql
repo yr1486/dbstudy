@@ -49,7 +49,7 @@ SELECT
        SAMPLE_TBL;
 
 
--- 평균(응시 결과가 없으면 0으로 처리하기)
+-- 평균 (응시 결과가 없으면 0으로 처리하기)
 SELECT
        AVG(NVL(KOR, 0))
      , AVG(NVL(ENG, 0))

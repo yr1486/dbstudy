@@ -9,7 +9,7 @@ SELECT
        EMPLOYEES;
         
         
--- 2. 글자 수 (바이트 수) 반환함수 
+-- 2. 글자 수(LENGTH) / 바이트 수(LENGTHB) 반환함수 
 
 SELECT
        LENGTH('HELLO')      -- 글자수 : 5S
@@ -32,6 +32,7 @@ SELECT
      , FIRST_NAME || ' ' || LAST_NAME -- 오라클에서는 || 이게 + 임
   FROM
         EMPLOYEES;
+        
 
 -- 자바와 디비에서 둘다 할 수 있다면 디비에서 하는게 맞다.
 --------------------------------------------------------
@@ -39,6 +40,7 @@ SELECT
         
 -- 4. 문자열 일부 반환하기
 -- SUBSTR(칼럼, BEGIN, LENGTH) : BEGIN 부터 LEINGTH개를 반환 
+
 -- 주의!! begin은 1에서 시작한다
 
 SELECT

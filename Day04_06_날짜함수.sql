@@ -12,7 +12,7 @@ SELECT
 -- 2. 날짜에 형식 지정하기
 SELECT
        TO_CHAR(SYSDATE, 'YYYY-MM-DD')
-     , TO_CHAR(SYSDATE, 'YYYY')  -- 필요한 정보만 추출하는 용도로도 사용 가능하다.
+     , TO_CHAR(SYSDATE, 'YYYY-MM')  -- 필요한 정보만 추출하는 용도로도 사용 가능하다.
   FROM
         DUAL;
 

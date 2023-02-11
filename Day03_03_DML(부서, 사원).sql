@@ -7,8 +7,7 @@
     5. 종류
      1) 삽입 : INSERT INTO VALUES
      2) 수정 : UPDATE SET WHERE
-     3) 삭제 : DELETE FROM WHERE
-
+     3) 삭제 : DELETE FROM WHERE 
 */
 
 --트랜젝션.. 중요함..
@@ -97,6 +96,7 @@ INSERT INTO EMPLOYEE_TBL VALUES(EMPLOYEE_SEQ.NEXTVAL, '김민서', 1, '사원', 
 INSERT INTO EMPLOYEE_TBL VALUES(EMPLOYEE_SEQ.NEXTVAL, '이은영', 2, '부장', 'F', '90/09/01', 5500000);
 INSERT INTO EMPLOYEE_TBL VALUES(EMPLOYEE_SEQ.NEXTVAL, '한성일', 2, '과장', 'M', '93/04/01', 5000000);
 COMMIT;
+
 
 /*
 -- 데이터 수정하기

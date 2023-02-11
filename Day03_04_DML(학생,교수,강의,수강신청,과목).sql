@@ -85,7 +85,7 @@ ALTER TABLE LECTURE_TBL
     ADD CONSTRAINT FK_LECTURE_ENROLL FOREIGN KEY(E_NO) 
         REFERENCES ENROLL_TBL(E_NO);
 
-
+-- on 절에서 묶어 결합시켜 , self 조
 
 -- 데이터 삽입
 
@@ -116,3 +116,7 @@ INSERT INTO LECTURE_TBL(L_NO, P_NO, E_NO, L_NAME, L_LOCATION) VALUES (3333, 1, 1
 
 -- 6. 변경된 내용을 DB에 반영
 COMMIT;
+
+
+
+
