@@ -85,7 +85,6 @@ ALTER TABLE LECTURE_TBL
     ADD CONSTRAINT FK_LECTURE_ENROLL FOREIGN KEY(E_NO) 
         REFERENCES ENROLL_TBL(E_NO);
 
--- on 절에서 묶어 결합시켜 , self 조
 
 -- 데이터 삽입
 

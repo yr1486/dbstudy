@@ -1,8 +1,14 @@
 -- 1. EMPLOYEES 테이블에서 JOB_ID를 조회하시오. 동일한 JOB_ID는 한 번만 출력하고 알파벳 순으로 정렬하여 조회하시오.
-SELECT EMPLOYEES
-  FROM JOB_ID;
+SELECT DISTINCT JOB_ID
+  FROM EMPLOYEES
+ ORDER BY ASC;
+
+
 
 -- 2. EMPLOYEES 테이블에서 DEPARTMENT_ID가 50인 사원 중에서 SALARY가 5000 이상인 사원을 조회하시오.
+SELECT DEPARTMEMT_ID
+  FROM EMPLOYEES
+WHERE DEPARTMENT_ID = 50;
 
 -- 3. EMPLOYEES 테이블에서 FIRST_NAME이 'Steven', LAST_NAME이 'King'인 사원을 조회하시오.
 

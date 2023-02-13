@@ -12,8 +12,7 @@ SELECT EMPLOYEES.FIRST_NAME, EMPLOYEES.LAST_NAME -- 칼럼의 오너 표시
     
 문법3. 네임이 길어지니까 별명 주기 => 한칸 띄고 별명
 SELECT E.FIRST_NAME AS FNAME, E.LAST_NAME AS LNAME -- 칼럼은 공백 별명 또는 AS 공백 별명 둘다 사용 가능, 가독성을 위해 AS를 쓰도록 하자.
-  FROM HR.EMPLOYEES E; ----테이블 이름은 공백만되고. AS가 안됨 
-  
+  FROM HR.EMPLOYEES E; ----테이블 이름은 공백만되고. AS가 안됨(수정이 안됨.)
   */
   
   
@@ -78,5 +77,15 @@ SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, DEPARTMENT_ID, SALARY AS SAL --SALARY
   FROM EMPLOYEES
 ORDER BY DEPARTMENT_ID ASC, SAL DESC;
 -- 주의 할 것 : 1차  ASC는 오름이라 생략이 가능함, 2차는 내림으로 해석해야함 각각 다른 차순인걸 이해하기 오름은 생략이 가능하니까!!! 조심하기.
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     

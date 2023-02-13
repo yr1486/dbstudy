@@ -156,21 +156,16 @@ SELECT EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO
 
 -- 8. ENAME이 A로 시작하는 사원 목록 조회하기
 --    1) WILD CARD
---          (1) % : 글자 수 제한 없는 모든 문자
+--          (1) % : 글자 수 제한 없는 '모든 문자'
 --          (2) _ : 1글자로 제한된 모든 문자
 --    2) 연산자
 --          (1) LIKE        : WILD CARD 를 포함한다
 --          (2) NOT LIKE  : WILD CARD를 포함하지 않는다
 
---A%      A_
---AI      AI
---APP     AP
---APPLE   AM
 
 SELECT EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO
   FROM EMP
  WHERE ENAME LIKE 'A%';
--- '%A 시작으로찾아야 됨
 
 
 

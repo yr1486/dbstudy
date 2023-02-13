@@ -60,6 +60,7 @@ DROP SEQUENCE DEPARTMENT_SEQ;
 -- 시퀀스는 PK값을 만들 때 주로 사용한다.
 
 -- 시퀀스(번호 생성기) 만들기 ==>
+--CREATE SEQUENCE 시퀀스명(스퀀스테이블명)
 CREATE SEQUENCE DEPARTMENT_SEQ -- 번호 뽑는 기계가 만들어짐 
     INCREMENT BY 1  -- 1씩 증가하는 번호를 만든다.(생략 가능)
     START WITH 1    -- 1부터 번호를 만든다.(생략 가능)
@@ -75,6 +76,7 @@ CREATE SEQUENCE DEPARTMENT_SEQ -- 번호 뽑는 기계가 만들어짐
 --FROM DUAL ==> 뜻없음 문법......
 
 -- 데이터 입력하기(Parent Key를 먼저 입력해야 한다.)
+-- (DEPARTMENT_SEQ.NEXTVAL)
 INSERT INTO DEPARTMENT_TBL(DEPT_NO, DEPT_NAME, LOCATION) VALUES(DEPARTMENT_SEQ.NEXTVAL, '영업부', '대구');
 INSERT INTO DEPARTMENT_TBL(DEPT_NO, DEPT_NAME, LOCATION) VALUES(DEPARTMENT_SEQ.NEXTVAL, '인사부', '서울');
 INSERT INTO DEPARTMENT_TBL(DEPT_NO, DEPT_NAME, LOCATION) VALUES(DEPARTMENT_SEQ.NEXTVAL, '총무부', '대구');
@@ -132,7 +134,8 @@ COMMIT;
 -- (서울에서 근무하는 사원의 부서번호(DEPART) 가 ON DELETE SET NULL 외래키 옵션에 의해서 NULL로 처리된다
 DELETE FROM DEPARTMENT_TBL WHERE LOCATION = '서울';
 COMMIT;
--- ===> 맨위에서 외래키 문에 옵션을 적어줬기 때문에 값이 널로 바뀐다!!!!!!!!   ===>    ON DELETE SET NULL; 완전 중요
+-- ===> 맨위에서 외래키 문에 옵션을 적어줬기 때문에 값이 널로 바뀐다!!!!!!!!  
+-- ===> ON DELETE SET NULL; 완전 중요
 -- ===> 만약 이 문구가 없었으면 지울 수 없음
 
 

@@ -26,6 +26,7 @@ SELECT
 
        
 -- 4. GROUP BY  절을 지정하면 같은 그룹끼리 집계함수가 적용된다
+
 SELECT
        DEPARTMENT_ID
      , COUNT(*) AS 부서별사원수
@@ -35,8 +36,8 @@ SELECT
      , MIN(SALARY) AS 부서별연봉꽝  -- 칼럼대상으로 규칙이 적용 
   FROM
        EMPLOYEES
-       WHERE 
-       DEPARTMENT_ID IS NOT NULL --     부서가 없는 애 제외하기 
+ --WHERE 
+ --      DEPARTMENT_ID IS NOT NULL --     부서가 없는 애 제외하기 
  GROUP BY
        DEPARTMENT_ID; -- 그룹바이절 다음에 HAVING절 올 수 있음 // 다만 웨얼이랑 해빙의 성능차이가 있음. 웨얼절이 성능이 좋음 그룹바이를 안해도 웨얼사용할 수 있음 
 -- HAVING 그룹바이(그핑룹)을 해야 사용할 수 있는 조건은 해빙절. 집계함수와 함께 쓰이는 경우가 많음. 

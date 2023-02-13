@@ -106,6 +106,8 @@ ALTER TABLE SCHEDULE_TBL
         REFERENCES EVENT_TBL(E_CODE)
             ON DELETE SET NULL;  -- ON DELETE CASCADE도 가능하다.
 
+
+
 -- 연습. NATION_TBL의 기본키 제거하기
 -- 외래키(FK)에 의해서 참조 중인 기본키(PK)는 "반드시" 외래키를 먼저 삭제해야 한다.
 ALTER TABLE PLAYER_TBL
@@ -114,6 +116,7 @@ ALTER TABLE SCHEDULE_TBL
     DROP CONSTRAINT FK_SCHEDULE_NATION;
 ALTER TABLE NATION_TBL
     DROP PRIMARY KEY;
+
 
 
 -- 외래키 제약 조건 일시중지(비활성화)

@@ -38,7 +38,7 @@ CREATE TABLE CUSTOMER_TBL (
     1. 칼럼 추가        : ALTER TABLE 테이블명 ADD 칼럼명 데이터타입 [제약조건]      // []는 생략가능
     2. 칼럼 삭제        : ALTER TABLE 테이블명 DROP COLUMN 칼럼명
     3. 칼럼 수정        : ALTER TABLE 테이블명 MODIFY 칼럼명 데이터타입 [제약조건]
-    4. 칼럼 이름 수정    : ALTER TABLE 테이블명 RENAME COLUMN 기존칼럼 T0 신규칼럼명 
+    4. 칼럼 이름 수정   : ALTER TABLE 테이블명 RENAME COLUMN 기존칼럼 T0 신규칼럼명 
     5. 테이블 이름      : ALTER TABLE 테이블명 RENAME TO 신규테이블명
     */
     
