@@ -38,6 +38,8 @@ SELECT EMPLOYEE_ID
        EMPLOYEES
  WHERE 
        DEPARTMENT_ID IN(10,20,30,40,50,60);
+       
+       
   
 -- 2. 분기 표현식
 -- CASE

@@ -28,6 +28,7 @@ SELECT
      , FLOOR(EXTRACT(SECOND FROM SYSTIMESTAMP))
   FROM
        DUAL;
+       
 
 
 -- 4. N개월 전후 날짜 구하기

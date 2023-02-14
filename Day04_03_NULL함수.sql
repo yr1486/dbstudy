@@ -35,6 +35,14 @@ SELECT
        NVL2(KOR + ENG + MAT, '응시', '결시')
   FROM
        SAMPLE_TBL;
+       
+       
+       
+       
+       
+       
+       
+       
 
 
 
