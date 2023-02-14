@@ -171,6 +171,7 @@ SELECT C.CUSTOMER_NAME AS 고객명
  GROUP BY C.CUSTOMER_ID, C.CUSTOMER_NAME;
 
 
+
 -- 8. 주문한 이력이 없는 고객의 이름을 조회하시오.
 -- 고객명
 -- 박세리
