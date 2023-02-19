@@ -62,13 +62,14 @@ DROP SEQUENCE DEPARTMENT_SEQ;
 -- 시퀀스(번호 생성기) 만들기 ==>
 --CREATE SEQUENCE 시퀀스명(스퀀스테이블명)
 CREATE SEQUENCE DEPARTMENT_SEQ -- 번호 뽑는 기계가 만들어짐 
+
     INCREMENT BY 1  -- 1씩 증가하는 번호를 만든다.(생략 가능)
-    START WITH 1    -- 1부터 번호를 만든다.(생략 가능)
-    NOMAXVALUE      -- 번호의 상한선이 없다.(생략 가능)  MAXVALUE 100 : 번호를 100까지만 생성한다. 
-    NOMINVALUE      -- 번호의 하한선이 없다.(생략 가능)  MINVALUE 100 : 번호의 최소값이 100이다.
-    NOCYCLE         -- 번호 순환이 없다.(생략 가능)      CYCLE : 번호가 MAXVALUE에 도달하면 다음 번호는 MINVALUE이다. => 순환되면 PK값으로 못쓴다.
-    NOCACHE         -- 메모리 캐시를 사용하지 않는다.    CACHE : 메모리 캐시를 사용한다.(사용하지 않는 것이 좋다.)
-    ORDER           -- 번호 건너뛰기가 없다.             NOORDER : 번호 건너뛰기가 가능하다.
+    START WITH 1    -- 1부터 번호를 만든다.       (생략 가능)
+    NOMAXVALUE      -- 번호의 상한선이 없다.      (생략 가능)  MAXVALUE 100 : 번호를 100까지만 생성한다. 
+    NOMINVALUE      -- 번호의 하한선이 없다.      (생략 가능)  MINVALUE 100 : 번호의 최소값이 100이다.
+    NOCYCLE         -- 번호 순환이 없다.          (생략 가능)  CYCLE        : 번호가 MAXVALUE에 도달하면 다음 번호는 MINVALUE이다. => 순환되면 PK값으로 못쓴다.
+    NOCACHE         -- 메모리 캐시를 사용하지 않는다.          CACHE        : 메모리 캐시를 사용한다.(사용하지 않는 것이 좋다.)
+    ORDER           -- 번호 건너뛰기가 없다.                   NOORDER      : 번호 건너뛰기가 가능하다.
 ;
 
 -- 시퀀스에서 번호뽑는 함수 : NEXTVAL
@@ -101,27 +102,34 @@ COMMIT;
 
 
 /*
--- 데이터 수정하기
+-- <데이터 수정하기>
+
 -- 1. 부서번호(DEPT_NO)가 1인 부서의 지역(LOCATION)을 '경기'로 수정하시오
+UPDATE 테이블명
+   SET 칼럼명 = '수정내용'
+ WHERE DEPT_NO = 1;
+COMMIT;
+
 UPDATE DEPARTMENT_TBL 
-   SET LOCATION = '경기' -- 수정할 내용 (여기서 등호는 대입 연산자)
- WHERE DEPT_NO = 1; -- 조건문 (여기서 등호는 비교 연산자이다) 오라클에서는 = 하나로 2가지 쓰임이 있으니까 골라서 쓰기.
+   SET LOCATION = '경기' -- = : 대입연산자
+ WHERE DEPT_NO = 1;      -- + : 비교연산자 => 오라클에서는 = 하나로 2가지 쓰임이 있으니까 골라서 써야함. 
 COMMIT;
 
 
 -- 2. 부서번호(DEPART)가 1인 부서에 근무하는 사원들의 급여(SALARY)를 500000원 증가시키시오.
-
 UPDATE EMPLOYEE_TBL
    SET SALARY = SALARY + 500000
  WHERE DEPART = 1;
 COMMIT;
 
  */
+ 
  /*
  이제 이클립스로 돌아가서 쓸때 
  INSERT UPDATE DELETE의 반환값은 INT ! 
  반환값이 0이면 실패
 */
+
 /*
 -- 데이터 삭제하기
 -- 1. 지역(LOCATION)이 '대구'인 부서를 삭제하시오.
@@ -134,6 +142,7 @@ COMMIT;
 -- (서울에서 근무하는 사원의 부서번호(DEPART) 가 ON DELETE SET NULL 외래키 옵션에 의해서 NULL로 처리된다
 DELETE FROM DEPARTMENT_TBL WHERE LOCATION = '서울';
 COMMIT;
+
 -- ===> 맨위에서 외래키 문에 옵션을 적어줬기 때문에 값이 널로 바뀐다!!!!!!!!  
 -- ===> ON DELETE SET NULL; 완전 중요
 -- ===> 만약 이 문구가 없었으면 지울 수 없음

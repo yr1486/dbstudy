@@ -16,7 +16,7 @@ SELECT E.FIRST_NAME AS FNAME, E.LAST_NAME AS LNAME -- 칼럼은 공백 별명 �
   */
   
   
--- 2. EMPLOYEES 테이블에서 DEPARTMENT_ID를 중복 제거하고 조회하기
+-- 2. EMPLOYEES 테이블에서 DEPARTMENT_ID를 중복 제거하고(빼고) 조회하기
  
 -- 중복값이 있음
 SELECT DEPARTMENT_ID

@@ -47,33 +47,33 @@ BEGIN
       INTO FNAME, LNAME
       FROM EMPLOYEES
      WHERE EMPLOYEE_ID = EMP_ID;
-     
-     RETURN FNAME || ' ' || LNAME;
+
+    RETURN FNAME || ' ' || LNAME;
 
 END;
 
 -- 사용자 함수 FUNC2 호출
-SELECT FUNC2(100), LAST_NAME
+SELECT EMPLOYEE_ID, FUNC2(EMPLOYEE_ID)
   FROM EMPLOYEES;
- --WHERE EMPLOYEE_ID = 100;
+
  
  -- 사용자 함수 FUNC3 정의
  -- 사원번호를 전달하면 해당 사원의 연봉이 15000 이상이면 '고액연봉', 아니면 '보통연봉'을 반환하는 함수
- CREATE OR REPLACE FUNCTION FUNC3(EMP_ID EMPLOYEES.EMPLOYEE_ID%TYPE)
- RETURN VARCHAR2
- IS
+CREATE OR REPLACE FUNCTION FUNC3(EMP_ID EMPLOYEES.EMPLOYEE_ID%TYPE)
+RETURN VARCHAR2
+IS
     SAL EMPLOYEES.SALARY%TYPE;
     MESSAGE VARCHAR2(12 BYTE);
 BEGIN
-
+    
     SELECT SALARY
-      INTO SAL -- 변수로 저장시키
+      INTO SAL
       FROM EMPLOYEES
      WHERE EMPLOYEE_ID = EMP_ID;
-     
-     IF SAL >= 15000 THEN
+    
+    IF SAL >= 15000 THEN
         MESSAGE := '고액연봉';
-    ELSE 
+    ELSE
         MESSAGE := '보통연봉';
     END IF;
     
@@ -84,9 +84,9 @@ END;
  -- 항상 정의 잡아서 실행 후
  -- 그담 아래 실행하기 
  
- -- 사용자 함수 FUNC3 호출
- SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, SALARY, FUNC3(EMPLOYEE_ID)
-   FROM EMPLOYEES; -- 모든 사원을 대상으로 
+-- 사용자 함수 FUNC3 호출
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, SALARY, FUNC3(EMPLOYEE_ID)
+  FROM EMPLOYEES; -- 모든 사원을 대상으로 
    
  
 -- 함수 MY_CEIL 정의
@@ -94,18 +94,18 @@ CREATE OR REPLACE FUNCTION MY_CEIL(N NUMBER, DIGIT NUMBER)
 RETURN NUMBER
 IS
 BEGIN
-    RETURN CEIL(N * POWER(10, DIGIT)) /  POWER(10, DIGIT); -- DIGIT 은 제곱임!!
+    RETURN CEIL(N * POWER(10, DIGIT)) / POWER(10, DIGIT);
 END;
 
 -- 함수 MY_CEIL 호출
 SELECT
-       MY_CEIL(111.111, 2) -- 소수2자리 올림 
-     , MY_CEIL(111.111, 1) -- 소수1자리 올림 
-     , MY_CEIL(111.111, 0) -- 정수로 올림 
-     , MY_CEIL(111.111, -1) -- 일의 자리 올림 
-     , MY_CEIL(111.111, -2) -- 십의자리 올림 
+       MY_CEIL(111.111, 2)   -- 소수2자리 올림
+     , MY_CEIL(111.111, 1)   -- 소수1자리 올림
+     , MY_CEIL(111.111, 0)   -- 정수로 올림
+     , MY_CEIL(111.111, -1)  -- 일의자리 올림
+     , MY_CEIL(111.111, -2)  -- 십의자리 올림
   FROM
-        DUAL;
+       DUAL;
 
 
 
@@ -143,23 +143,22 @@ round(5.6) = 6
 
 
 
--- 함수 MY_FLOOR 정의 
+-- 함수 MY_FLOOR 정의
 CREATE OR REPLACE FUNCTION MY_FLOOR(N NUMBER, DIGIT NUMBER)
 RETURN NUMBER
 IS
 BEGIN
     RETURN FLOOR(N * POWER(10, DIGIT)) / POWER(10, DIGIT);
-    
 END;
 
 -- 함수 MY_FLOOR 호출
 SELECT
-       MY_FLOOR(9999.999, 2)  --소수2자리 내림
-     , MY_FLOOR(9999.999, 1)  --소수1자리 내림
-     , MY_FLOOR(9999.999, 0)  --정수로 내림
-     , MY_FLOOR(9999.999, -1)  --일의자리 내림
-     , MY_FLOOR(9999.999, -2)  --십의자리 내림
-    FROM DUAL;
+       MY_FLOOR(9999.999, 2)   -- 소수2자리 내림
+     , MY_FLOOR(9999.999, 1)   -- 소수1자리 내림
+     , MY_FLOOR(9999.999, 0)   -- 정수로 내림
+     , MY_FLOOR(9999.999, -1)  -- 일의자리 내림
+     , MY_FLOOR(9999.999, -2)  -- 십의자리 내림
+  FROM DUAL;
               
 
 

@@ -4,7 +4,7 @@
     2. 여러개의 쿼리문이필요한 서비스를 프로시저로 작성해 두면 사용이 편리하다
         (예시: 은행 이체(UPDATE 쿼리가 2개로 구성 , 내껏도 업데이트 너껏도 업데이트))
     3. 형식
-        CREATE [OR REPLACE] PROCEDURE 프로시저명[()]
+        CREATE [OR REPLACE] PROCEDURE 프로시저명[(매개변수)]
         (괄호안 매개변수가 들어갈 수 있다, []는 생략가능하니까 염두해두기.
         IS -- AS 도 가능
             변수선언
@@ -27,6 +27,8 @@ END;
 -- 프로시저1 호출(실행하기)
 EXECUTE PROC1();
 
+
+
 -- 프로시저2 정의(만들기) : 사원번호가 100인 사원의 FIRST_NAME, LAST_NAME, SALARY를 조회하는 프로시저
 CREATE OR REPLACE PROCEDURE PROC2
 IS
@@ -43,6 +45,8 @@ END;
 
 -- 프로시저2 호출(실행하기)
 EXECUTE PROC2();
+
+
 
 -- 프로시저3 정의(만들기) : 사원번호를 전달하면 해당 사원의 FIRST_NAME, LAST_NAME, SALARY를 조회하는 프로시저
 -- 입력 파라미터
@@ -68,12 +72,14 @@ END;
 EXECUTE PROC3(0);
 
 
+
 -- 프로시저4 정의(만들기)
 -- 사원번호가 100인 사원의 FIRST_NAME, LAST_NAME을 출력 파라미터로 반환하는 프로시저
 
 -- 출력 파라미터
 -- 1. 프로시저의 실행 결과를 저장하는 변수이다.
--- 2. 형식 : 변수명  OUT 타입
+-- 2. 형식 : 변수명 OUT 타입
+
 CREATE OR REPLACE PROCEDURE PROC4(FNAME OUT EMPLOYEES.FIRST_NAME%TYPE, LNAME OUT EMPLOYEES.LAST_NAME%TYPE)
 IS
 BEGIN
@@ -95,15 +101,11 @@ END;
 
 
 
-
--- 프로시저5. 3,4번 프로시저 합치기
--- 사원번호를 전달하면, 해당 사원의 FIRST_NAME이 출력 파라미터 FNAME에 저장되도록 작성.
--- 없는 사원번호가 전달되면 출력 파라미터 FNAME에 'Noname' 이 저장 되도록 작성.
-
--- PROC6(100, FNAME) : 사원번호 100은 Steven 입니다.
--- PROC6(0, FNAME) : 사원번호 0은 Noname 입니다.
---CREATE OR REPLACE PROCEDURE PROC6(EMP_ID IN EMPLOYEES.EMPLOYEE_ID%TYPE,
-
+-- 프로시저5. 사원번호를 전달하면, 해당 사원의 FIRST_NAME이 출력 파라미터 FNAME에 저장되도록 작성.
+-- 없는 사원번호가 전달되면 출력 파라미터 FNAME에 'Noname'이 저장되도록 작성.
+-- 실행 예시)
+-- PROC6(100, FNAME) : 사원번호 100은 Steven입니다.
+-- PROC6(0, FNAME)   : 사원번호 0은 Noname입니다.
 CREATE OR REPLACE PROCEDURE PROC5
 (
     EMP_ID IN EMPLOYEES.EMPLOYEE_ID%TYPE,
@@ -128,140 +130,114 @@ BEGIN
 END;
 
 
+
 /*
-    프로시저 연습 
-    1.BUY_PROC 프로시저 구현하기
+    프로시저 연습
+    1. BUY_PROC 프로시저 구현하기
     2. 처리할 일
-      1) 구매내역 테이블에 구매 내역을 추가(INSERT)한다
-      2) 제품 테이블의 재고 내역을 수정(UPDATE)한다 
-      3) 고객 테이블의 포인트를 수정(UPDATEO)한다
+        1) 구매내역 테이블에 구매 내역을 추가(INSERT)한다.
+        2) 제품 테이블의 재고 내역을 수정(UPDATE)한다.
+        3) 고객 테이블의 포인트를 수정(UPDATE)한다.
 */
---테이블 생성 반대로 삭제 
+
+-- 테이블 삭제하기
 DROP TABLE BUY_TBL;
 DROP TABLE CUST_TBL;
 DROP TABLE PROD_TBL;
 
-
---시퀀스 썼으니 삭제 
+--  시퀀스 삭제하기
 DROP SEQUENCE BUY_SEQ;
-
-
 
 -- 제품 테이블 구성하기
 CREATE TABLE PROD_TBL (
-    P_CODE NUMBER NOT NULL,
-    P_NAME VARCHAR2(20 BYTE),
-    P_PRICE NUMBER,
-    P_STOCK NUMBER
+    /*  */ P_CODE NUMBER NOT NULL,
+    /*  */ P_NAME VARCHAR2(20 BYTE),
+    /*  */ P_PRICE NUMBER,
+    /*  */ P_STOCK NUMBER
 );
-
 ALTER TABLE PROD_TBL
     ADD CONSTRAINT PK_PROD PRIMARY KEY(P_CODE);
-INSERT INTO PROD_TBL(P_CODE,P_NAME,P_PRICE,P_STOCK) VALUES(1000, '홈런볼', 1000, 100);
-INSERT INTO PROD_TBL(P_CODE,P_NAME,P_PRICE,P_STOCK) VALUES(1001, '맛동산', 2000, 100);
+INSERT INTO PROD_TBL(P_CODE, P_NAME, P_PRICE, P_STOCK) VALUES(1000, '홈런볼', 1000, 100);
+INSERT INTO PROD_TBL(P_CODE, P_NAME, P_PRICE, P_STOCK) VALUES(1001, '맛동산', 2000, 100);
 COMMIT;
 
--- 고객 테이블 구성하기 
+-- 고객 테이블 구성하기
 CREATE TABLE CUST_TBL (
     C_NO NUMBER NOT NULL,
     C_NAME VARCHAR2(20 BYTE),
     C_POINT NUMBER
 );
-
 ALTER TABLE CUST_TBL
     ADD CONSTRAINT PK_CUST PRIMARY KEY(C_NO);
 INSERT INTO CUST_TBL(C_NO, C_NAME, C_POINT) VALUES(1, '정숙', 0);
 INSERT INTO CUST_TBL(C_NO, C_NAME, C_POINT) VALUES(2, '재홍', 0);
 COMMIT;
 
--- 구매 테이블 구성하기 
+-- 구매 테이블 구성하기
 CREATE TABLE BUY_TBL (
     B_NO NUMBER NOT NULL,
     C_NO NUMBER NOT NULL,
-    P_CODE NUMBER, -- 누가 무슨 제품을 샀는지,
+    P_CODE NUMBER,
     B_AMOUNT NUMBER
 );
-
-ALTER  TABLE BUY_TBL
+ALTER TABLE BUY_TBL
     ADD CONSTRAINT PK_BUY PRIMARY KEY(B_NO);
 ALTER TABLE BUY_TBL
     ADD CONSTRAINT FK_BUY_CUST FOREIGN KEY(C_NO)
         REFERENCES CUST_TBL(C_NO)
-        -- ON DELETE SET NULL; 절대 안댐 낫널이기때문에
             ON DELETE CASCADE;
-
 ALTER TABLE BUY_TBL
     ADD CONSTRAINT FK_BUY_PROD FOREIGN KEY(P_CODE)
         REFERENCES PROD_TBL(P_CODE)
-        ON DELETE SET NULL;
+            ON DELETE SET NULL;
 
 CREATE SEQUENCE BUY_SEQ
-    NOCACHE; --     번호표를 막 뽑아두는 것. 미리뽑아두면 날라가?서 NOCACHE...
+    NOCACHE;
 
 
-
-
--- BUY_PROC 프로시저 정의 --IN : 정보를 받아들인다.
+-- BUY_PROC 프로시저 정의
 CREATE OR REPLACE PROCEDURE BUY_PROC
 (
-    CNO IN CUST_TBL.C_NO%TYPE, 
-    PCODE IN PROD_TBL.P_CODE%TYPE, 
-    BUY_AMOUNT IN BUY_TBL.B_AMOUNT%TYPE
+    /* 고객번호 */  CNO IN CUST_TBL.C_NO%TYPE, 
+    /* 제품코드 */  PCODE IN PROD_TBL.P_CODE%TYPE, 
+    /* 구매수량 */  BUY_AMOUNT IN BUY_TBL.B_AMOUNT%TYPE
 )
-                                            --얘랑 얘랑 같은타입 
-IS --OR AS
---이제 변수선언 , 있으면 적고 업으면 말고
-BEGIN                                                       -- 위에서 번호생성기 만들었으니까, 시퀀스 써야지 
---1) 구매내역 테이블에 구매 내역을 추가(INSERT)한다
+IS
+BEGIN
+
+    -- 1) 구매내역 테이블에 구매 내역을 추가(INSERT)한다.
     INSERT INTO BUY_TBL(B_NO, C_NO, P_CODE, B_AMOUNT) VALUES(BUY_SEQ.NEXTVAL, CNO, PCODE, BUY_AMOUNT);
-                                                                                --  변수로 받아오는거 
---2) 제품 테이블의 재고 내역을 수정(UPDATE)한다
-    UPDATE PROD_TBL SET P_STOCK = P_STOCK - BUY_AMOUNT WHERE P_CODE = PCODE;
-
---3) 고객 테이블의 포인트를 수정(UPDATE)한다
---   총 구매액의 10% 를 정수로 올림처리해서 포인트로 준다.
--- CEIL(가격 * 구매수량 * 0.1)
---  제품테이블에서 
-
---CEIL((SELECT P_PRICE FROM PROD_TBL WHERE  P_CODE = PCODE) * BUY_AMOUNT * 0.1)
-UPDATE CUST_TBL SET C_POINT = C_POINT + CEIL((SELECT P_PRICE FROM PROD_TBL WHERE P_CODE = PCODE) * BUY_AMOUNT * 0.1) WHERE C_NO = CNO;
-
---4) 커밋
-COMMIT;
-
-EXCEPTION 
-
-    WHEN OTHERS THEN
-    --모든 예외에 대해서 
-    --예외 사유 확인
-    DBMS_OUTPUT.PUT_LINE(SQLCODE || '(' || SQLERRM || ')');
     
-    --롤백
-    ROLLBACK;
+    -- 2) 제품 테이블의 재고 내역을 수정(UPDATE)한다.
+    UPDATE PROD_TBL SET P_STOCK = P_STOCK - BUY_AMOUNT WHERE P_CODE = PCODE;
+    
+    -- 3) 고객 테이블의 포인트를 수정(UPDATE)한다.
+    --    총 구매액의 10%를 정수로 올림처리해서 포인트로 준다.
+    UPDATE CUST_TBL SET C_POINT = C_POINT + CEIL((SELECT P_PRICE FROM PROD_TBL WHERE P_CODE = PCODE) * BUY_AMOUNT * 0.1) WHERE C_NO = CNO;
+    
+    -- 4) 커밋
+    COMMIT;
+    
+EXCEPTION
+
+    WHEN OTHERS THEN  -- 모든 예외를 처리
+    
+        -- 예외 사유 확인
+        DBMS_OUTPUT.PUT_LINE(SQLCODE || '(' || SQLERRM || ')');
+        
+        -- 롤백
+        ROLLBACK;
     
 END;
 
---BUY_PROC 프로시저 호출
-EXECUTE BUY_PROC(1, 1000, 10); -- 고객번호, 제품코드, 구매수량 
 
+-- BUY_PROC 프로시저 호출
+
+EXECUTE BUY_PROC(1, 1000, 10);  -- 고객번호 1, 제품코드 1000, 구매수량 10
 
 BEGIN
-    BUY_PROC(2, 1001, 5);
+    BUY_PROC(2, 1001, 5);  -- 고객번호 2, 제품코드 1001, 구매수량 5
 END;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
