@@ -10,14 +10,17 @@
     4. 삽입, 수정, 삭제가 자주 발생하는 곳에서는 인덱스를 사용하면 성능이 떨어진다.
 */
 
--- 인덱스 정보가 저장된 데이터 사전(메타 데이터, 시스템 카탈로그)
+-- 인덱스 정보가 저장된 데이터 사전(메타 데이터, 시스템 카탈로그)문
+
 DESCRIBE ALL_INDEXES;
 SELECT OWNER, INDEX_NAME, TABLE_NAME
   FROM ALL_INDEXES;
+  
 
 DESCRIBE DBA_INDEXES;
 SELECT OWNER, INDEX_NAME, TABLE_NAME
   FROM DBA_INDEXES;
+  
 
 DESCRIBE USER_INDEXES;
 SELECT INDEX_NAME, TABLE_OWNER, TABLE_NAME

@@ -85,7 +85,7 @@ INSERT INTO DEPARTMENT_TBL(DEPT_NO, DEPT_NAME, LOCATION) VALUES(DEPARTMENT_SEQ.N
 COMMIT;
 
 -- 시퀀스 삭제하기
-DROP SEQUENCE EMPLOYEE_SEQ;
+DROP SEQUENCE EMPLOYEE_SEQ; 
 
 
 -- 시퀀스 만들기
@@ -105,6 +105,7 @@ COMMIT;
 -- <데이터 수정하기>
 
 -- 1. 부서번호(DEPT_NO)가 1인 부서의 지역(LOCATION)을 '경기'로 수정하시오
+
 UPDATE 테이블명
    SET 칼럼명 = '수정내용'
  WHERE DEPT_NO = 1;
@@ -117,6 +118,7 @@ COMMIT;
 
 
 -- 2. 부서번호(DEPART)가 1인 부서에 근무하는 사원들의 급여(SALARY)를 500000원 증가시키시오.
+
 UPDATE EMPLOYEE_TBL
    SET SALARY = SALARY + 500000
  WHERE DEPART = 1;
@@ -138,8 +140,23 @@ COMMIT;
 DELETE FROM DEPARTMENT_TBL WHERE LOCATION = '대구';
 COMMIT;
 
+
+
 -- 2. 지역(LOCATION)이 '서울'인 부서를 삭제하시오
 -- (서울에서 근무하는 사원의 부서번호(DEPART) 가 ON DELETE SET NULL 외래키 옵션에 의해서 NULL로 처리된다
+
+
+
+
+
+
+
+
+
+
+
+
+
 DELETE FROM DEPARTMENT_TBL WHERE LOCATION = '서울';
 COMMIT;
 
