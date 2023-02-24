@@ -100,6 +100,8 @@ INSERT INTO EMPLOYEE_TBL VALUES(EMPLOYEE_SEQ.NEXTVAL, '이은영', 2, '부장', 
 INSERT INTO EMPLOYEE_TBL VALUES(EMPLOYEE_SEQ.NEXTVAL, '한성일', 2, '과장', 'M', '93/04/01', 5000000);
 COMMIT;
 
+-- 여기위까지 블럭잡고 gdj61로 들어가서 실행 
+
 
 /*
 -- <데이터 수정하기>

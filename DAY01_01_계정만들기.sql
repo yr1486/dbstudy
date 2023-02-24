@@ -25,6 +25,7 @@
     ==> 맨위에 초록 버튼 1. 선택(▶) 2.전체 인데 우리는 단축키로 많이 쓸거임.
 */
 
+-- sys계정으로 접속후 진행하기.
 DROP USER GDJ61 CASCADE;
 CREATE USER GDJ61 IDENTIFIED BY 1111;
 GRANT DBA TO GDJ61;
