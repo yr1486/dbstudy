@@ -25,9 +25,10 @@
     2. 다중 행 서브쿼리
         1) 결과 행이 1개 이상이다
         2) FROM절, WHERE절에서 많이 사용된다
-        3) 다중 행 서븐쿼리에서 사용하는 연산자
+        3) 다중 행 서브쿼리에서 사용하는 연산자
             다중 행 연산자를 사용(IN, ANY, ALL 등)
 */
+
 
 /* WHERE절의 서브쿼리 */
 
@@ -58,12 +59,14 @@ SELECT DEPT_NO, DEPT_NAME, LOCATION
  WHERE LOCATION = (SELECT LOCATION
                      FROM DEPARTMENT_TBL
                     WHERE DEPT_NO = 2);
-                     -- 메인쿼리가 로케이션을 준비햇으니까 서브쿼리도 로케이션을 반환해줘야한다 동등 비
+                     -- 메인쿼리가 로케이션을 준비햇으니까 서브쿼리도 로케이션을 반환해줘야한다 동등 비교
 
 -- 3. 가장 높은 급여를 받는 사원을 조회하시오
 SELECT 사원정보
   FROM 사원
  WHERE 급여 = (가장 높은 급여);
+
+SELECT * FROM EMPLOYEE_TBL;
 
 SELECT EMP_NO, NAME, DEPART, GENDER, POSITION, HIRE_DATE, SALARY
   FROM EMPLOYEE_TBL

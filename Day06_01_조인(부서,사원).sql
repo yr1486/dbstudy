@@ -12,7 +12,11 @@
     3. 조인 성능 향상을 위해서 가급적 드라이브(DRIVE) 테이블을 먼저 작성한다. 드리븐(DRIVEN) 테이블은 나중에 작성한다.
 */
 
--- 1. 내부 조인( 두 테이블에 일치하는 정보를 조인한다)
+-- 1. 내부 조인(두 테이블에 일치하는 공통 정보를 조인한다)
+
+-- SELECT
+--   FROM 테이블명 INNER JOIN 테이블명
+--     ON 칼럼명 = 칼럼명;
 
 -- 1) 표준 문법 
  
@@ -26,8 +30,14 @@ SELECT E.EMP_NO, E.NAME, D.DEPT_NO, D.DEPT_NAME
   FROM DEPARTMENT_TBL D, EMPLOYEE_TBL E
  WHERE D.DEPT_NO = E.DEPART;
  
- -- 2. 왼쪽 외부 조인(왼쪽에 있는 테이블은 일치하는 정보가 없어도 무조건 조인한다)
+
  
+-- 2. 왼쪽 외부 조인(왼쪽에 있는 테이블은 일치하는 정보가 없어도 무조건 조인한다 / NULL 로 채워서. )
+
+-- SELECT
+--   FROM 테이블명 LEFT JOIN 테이블명
+--     ON 칼럼명 = 칼럼명;
+
 -- 1) 표준 문법
 SELECT D.DEPT_NO, D.DEPT_NAME, E.EMP_NO, E.NAME
   FROM DEPARTMENT_TBL D LEFT OUTER JOIN EMPLOYEE_TBL E

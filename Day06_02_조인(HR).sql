@@ -1,7 +1,9 @@
 /*
+    셀프조인 어려우면 다른거부터 공부하기.. 웹개발에서 잘 안나옴 
+    
     셀프 조인 SELF JOIN
     1. 하나의 테이블에 PK와 FK가 모두 있는 경우에 사용되는 조인이다. 함께 있는 구조
-    2. 동일한 테이블을 조인하기 때문에 별명을 다르게 지정해서 조인한다
+    2. 동일한 테이블을 조인하기 때문에 '별명'을 다르게 지정해서 조인한다
     3. 문법은 기본적으로 내부 조인과 동일하다 
 
 */
@@ -27,8 +29,6 @@ SELECT
        E.MANAGER_ID = M.EMPLOYEE_ID
  ORDER BY
        E.EMPLOYEE_ID;
-
--- 셀프조인 어려우면 다른거부터 공부하기.. 웹개발에서 잘 안나옴 
 
 -- 셀프 조인 연습 
 -- 각 사원 중에서 매니저보다 먼저 입사한 사원을 조회하시오
@@ -65,6 +65,9 @@ SELECT
  ORDER BY
        ME.EMPLOYEE_ID;
 
+
+
+----------------------------------------------------------------------------------------------------------------------------------
 
 -- 조인 연습.
 
@@ -118,6 +121,7 @@ SELECT E.EMPLOYEE_ID, E.FIRST_NAME, D.DEPARTMENT_NAME, L.CITY
    
 -- 4. 부서별 DEPARTMENT_NAME과 사원 수와 평균 연봉을 조회하시오
 -- GROUP BY와 JOIN 함께 사용해 보기
+
 SELECT D.DEPARTMENT_NAME, COUNT(*), AVG(E.SALARY)
   FROM DEPARTMENTS D INNER JOIN EMPLOYEES E
     ON D.DEPARTMENT_ID = E.DEPARTMENT_ID
