@@ -19,7 +19,7 @@ END;
 
 
 SELECT GET_NAME(1001) AS 사원명
-  FROM EMPLOYEE_TBL
+  FROM EMPLOYEE_TBL 
  WHERE EMP_NO =1001; -- 특정한명만 뽑을때 ''SELECT GET_NAME(1001) AS 사원명
  
 SELECT DISTINCT GET_NAME(1001) AS 사원명
@@ -29,6 +29,8 @@ SELECT DISTINCT GET_NAME(1001) AS 사원명
 SELECT GET_NAME(EMP_NO) AS 사원명
   FROM EMPLOYEE_TBL;-- 전체 넘기기 
   
+
+
   
   
 --삽입/수정/삭제하면 메시지를 출력하는 트리거 만들기

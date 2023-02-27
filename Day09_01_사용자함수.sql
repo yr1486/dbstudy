@@ -28,7 +28,12 @@ END;
 
 --사용자 함수 FUNC1   호출
 -- FUNC1(); 이렇게 호출하면 안됨
+
 SELECT FUNC1() FROM DUAL;
+
+
+
+
 
 -- 사용자 함수 FUNC2 정의
 -- 사원번호를 전달하면 해당 사원의 FIRST_NAME을 반환하는 함수
@@ -53,8 +58,9 @@ BEGIN
 END;
 
 -- 사용자 함수 FUNC2 호출
-SELECT EMPLOYEE_ID, FUNC2(EMPLOYEE_ID)
-  FROM EMPLOYEES;
+SELECT EMPLOYEE_ID, FUNC2(100) --EMPLOYEE_ID 해도됨 
+  FROM EMPLOYEES
+ WHERE EMPLOYEE_ID =100;
 
  
  -- 사용자 함수 FUNC3 정의

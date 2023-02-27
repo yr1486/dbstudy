@@ -155,6 +155,9 @@ ALTER TABLE ORDER_TBL
 -- 김연아  2
 
 -- 1) 표준문법
+
+
+
 SELECT C.CUSTOMER_NAME AS 고객명
      , COUNT(*) AS 구매도서수
   FROM CUSTOMER_TBL C INNER JOIN ORDER_TBL O
@@ -172,7 +175,7 @@ SELECT C.CUSTOMER_NAME AS 고객명
 
 
 
--- 8. 주문한 이력이 없는 고객의 액이름을 조회하시오.
+-- 8. 주문한 이력이 없는 고객의 이름을 조회하시오.
 -- 고객명
 -- 박세리
 
@@ -269,13 +272,13 @@ SELECT O.ORDER_ID AS 구매번호
 -- 추신수  86000
 
 -- 1) 표준문법
-SELECT C.CUSTOMER_NAME AS 고객명
+SELECT C.CUSTOMER_NAME AS 고객명 
      , SUM(B.PRICE * O.AMOUNT) AS 총구매액
   FROM CUSTOMER_TBL C INNER JOIN ORDER_TBL O
     ON C.CUSTOMER_ID = O.CUSTOMER_ID INNER JOIN BOOK_TBL B
     ON B.BOOK_ID = O.BOOK_ID
  GROUP BY C.CUSTOMER_ID, C.CUSTOMER_NAME;
-
+  
 -- 2) 오라클
 SELECT C.CUSTOMER_NAME AS 고객명
      , SUM(B.PRICE * O.AMOUNT) AS 총구매액
