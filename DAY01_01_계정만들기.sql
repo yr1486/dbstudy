@@ -38,6 +38,13 @@ DROP USER BYR CASCADE;
 CREATE USER BYR IDENTIFIED BY 1111;
 GRANT DBA TO BYR;
 
+-- HR 계정 불러오기
+-- CMD창에서
+-- 1. sqlplus 입력
+-- 2. 관리자 계정으로 로그인 : SYSTEM / 1111 로그인
+-- 3. ALTER USER HR ACCOUNT UNLOCK; 엔터
+-- 4. ALTER USER HR IDENTIFIED BY 1111; 엔터
+-- 5. 끝(노션에 메모해놈)
 
         
     
